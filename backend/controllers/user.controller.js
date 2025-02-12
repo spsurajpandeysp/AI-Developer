@@ -47,9 +47,23 @@ export const userLoginController = async(req,res)=>{
 
 export const profileController = async(req,res)=>{
     try{
+        console.log("sdfffffffffffffffffffffffffffffffffffffffffffffffffff",req.suraj)
         res.send(req.user)
     }
     catch(error){
-        res.status(400).json({message:error.message})
+        res.status(400).json({error:error.message})
+    }
+}
+
+export const userLogoutController = async(req,res) =>{
+    try{
+        const token = req.cookies.token || req.header.authorization.split(' ')[1];
+        await redisClient.set(token, 'logout', { EX: 60 * 60 * 24 });
+        res.cookie('token','');
+        res.status(200).send("sdfsdf")
+        
+    }
+    catch(error){
+        res.status(400).json({error:error.message});
     }
 }
