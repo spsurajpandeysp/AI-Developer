@@ -16,7 +16,7 @@ app.get('/',(req,res)=>{
     res.send("Suraj Pandey")
 })
 
-app.use('/api',userRoutes)
+app.use('/api/user',userRoutes)
 
 
 export default app;

@@ -33,12 +33,22 @@ export const userLoginController = async(req,res)=>{
         if(!isPasswordValid){
             return res.status(401).json({"message":"Enter correct password"});
         }
+        const jwtToken =await user.generateJWT(user.email);
+      
+        console.log(user,jwtToken)
 
-        
-
-        res.status(201).json({user,"message":"Login Succesfully"});
+        res.status(201).json({user,token:jwtToken,"message":"Login Succesfully"});
     }
     catch(error){
         res.status(400).json({"message":error.message})
+    }
+}
+
+export const profileController = async(req,res)=>{
+    try{
+        res.send(req.user)
+    }
+    catch(error){
+        res.status(400).json({message:error.message})
     }
 }
