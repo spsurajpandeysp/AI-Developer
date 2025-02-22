@@ -8,10 +8,12 @@ export function App() {
 
   return (
     <>
-      
+
       <div className="bg-red-400 text-white p-4">
-  <h1>Suraj Pandey</h1>
-</div>
+        <h1>Suraj Pandey</h1>
+        <h1>Suraj Pandey</h1>
+
+      </div>
 
     </>
   )
